@@ -3,7 +3,7 @@
 // Preamble
 #let title = [Your Title]
 #let author = [Your name]
-#let type = [Thesis Proposal]
+#let type = [Literature Review | Dissertation Idea | Thesis Proposal (Paper Type)]
 #let email = [your.email\@hpi.de]
 #let reviewer = [Reviewer's name]
 #let abstract = [#lorem(80)]
