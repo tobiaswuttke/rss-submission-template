@@ -53,14 +53,19 @@ show heading.where(level: 1): it => [
   #v(12pt,weak: true)
 ]
 
-// Move caption 
+// Move captions of Figures
 show figure: it => align(center)[
   #set text(
     size: 8pt
   )
-  #it.supplement #it.counter.display(it.numbering).#it.caption
-  #v(10pt, weak: true)
-  #it.body
+  #if it.kind == table [
+    #it.supplement #it.counter.display(it.numbering).#it.caption
+    #v(10pt, weak: true)
+    #it.body
+  ] else [
+    #it.body
+    #it.supplement #it.counter.display(it.numbering).#it.caption
+  ]
 ]
 
 // Heading 2

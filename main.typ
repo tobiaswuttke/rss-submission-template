@@ -27,7 +27,6 @@
 This is an example cite: @baiyereDigitalTransformationNew2020
 See @roadmap for more details.
 
-
 #figure(
  table(
     columns: 4,
@@ -36,8 +35,16 @@ See @roadmap for more details.
     [],[],[],[]
   ),
   caption: [
-    The roadmap.
+    A Table.
   ],
 )<roadmap>
+
+This is a sample Figure:
+#figure(
+  image("img/HPI_logo.svg",width: 10%),
+  caption: [
+    A Figure.
+  ],
+)<figure1>
 
 #bibliography("lit.bib")
