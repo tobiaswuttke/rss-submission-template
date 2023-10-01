@@ -1,4 +1,4 @@
-#import "rss-template.typ": conf
+#import "rss-template.typ": conf, apacite
 
 // Preamble
 #let title = [Your Title]
@@ -24,7 +24,9 @@
 
 == Second Heading (Please avoid third heading)
 #lorem(100)
-This is an example cite: @baiyereDigitalTransformationNew2020
+
+This is an example cite: #apacite("baiyereDigitalTransformationNew2020").
+
 See @roadmap for more details.
 
 #figure(
@@ -39,7 +41,7 @@ See @roadmap for more details.
   ],
 )<roadmap>
 
-This is a sample Figure:
+@figure1 is an example of a figure:
 #figure(
   image("img/HPI_logo.svg",width: 10%),
   caption: [

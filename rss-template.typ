@@ -59,12 +59,12 @@ show figure: it => align(center)[
     size: 8pt
   )
   #if it.kind == table [
-    #it.supplement #it.counter.display(it.numbering).#it.caption
+    #it.caption
     #v(10pt, weak: true)
     #it.body
   ] else [
     #it.body
-    #it.supplement #it.counter.display(it.numbering).#it.caption
+    #it.caption
   ]
 ]
 
@@ -90,4 +90,26 @@ par(justify: true)[
 // Rest of the document
 doc
 
+}
+
+// workaround by @neumannjan that allows you to cite in proper APA style (https://github.com/typst/typst/issues/1161#issuecomment-1575227174)
+  #let apacite(..authors, brackets: true, date: true) = {
+    if brackets [(] else []
+    authors.pos().map(a => {
+        show regex(" \d+"): v => {
+            if date {
+                if brackets [,#v] else {
+                    show " ": vv => []
+                    [ (#v)]
+                }
+            } else []
+        }
+        show ", n.d.": v => {
+            if date {
+                if brackets [#v] else [ (n.d.)]
+            } else []
+        }
+        cite(a, brackets: false, style: "chicago-author-date")
+    }).join("; ", last: "; ")
+    if brackets [)] else []
 }
