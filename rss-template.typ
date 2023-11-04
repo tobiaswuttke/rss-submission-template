@@ -91,25 +91,3 @@ par(justify: true)[
 doc
 
 }
-
-// workaround by @neumannjan that allows you to cite in proper APA style (https://github.com/typst/typst/issues/1161#issuecomment-1575227174)
-  #let apacite(..authors, brackets: true, date: true) = {
-    if brackets [(] else []
-    authors.pos().map(a => {
-        show regex(" \d+"): v => {
-            if date {
-                if brackets [,#v] else {
-                    show " ": vv => []
-                    [ (#v)]
-                }
-            } else []
-        }
-        show ", n.d.": v => {
-            if date {
-                if brackets [#v] else [ (n.d.)]
-            } else []
-        }
-        cite(a, brackets: false, style: "chicago-author-date")
-    }).join("; ", last: "; ")
-    if brackets [)] else []
-}
